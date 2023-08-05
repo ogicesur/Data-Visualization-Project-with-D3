@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>InfoViz Team 18</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="../assets/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="../assets/style.css" type="text/css"/>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+
+<body>
+
+<!--/*The header contains the navigation bar with 3 different navigation items */-->
+<header class="header">
+    <div class="navbar-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg">
+                        <ul id="nav" class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="page-scroll active" href="index.html">InfoVis</a></li>
+                            <li class="nav-item"><a class="page-scroll" href="projectInfo.html">Project Info</a></li>
+                            <li class="nav-item"><a class="page-scroll" href="MeetOurTeam.html">Meet Our Team</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<!--/*This sections entails an short description to the wesite such as two buttons which scroll down to different parts of the page with respect-->
+<!-- the to different visualisations*/-->
+<section id="home" class="hero-section">
+    <div class="container">
+        <div class="row align-items-center position-relative">
+            <div class="col-lg-12">
+                <div class="hero-content">
+                    <h1 class="wow fadeInUp" data-wow-delay=".4s">
+                        Welcome to our InfoVis Project
+                    </h1>
+                    <h3 class="wow fadeInUp" data-wow-delay=".6s">
+                        With this website we intend to visualize how <I><b>COVID-19</b></I> affected the tourism within
+                        all federal states of Germany. <br>
+                        You can view information from <b>2019</b>, the year before COVID-19, and <b>2020</b>, where the
+                        pandemic started and <br>
+                        how the established COVID restrictions (e.g. lockdown, etc) influenced the tourism. The main
+                        focus lies<br>
+                        on the number of people that arrived (<i><b>Arrivals</b></i>) and people the stayed overnight
+                        (<i><b>Overnight Stays</b></i>) during the time period.<br>
+                        For reference the COVID restrictions during 2020 were <br>
+                        1. <u>Lockdown:</u> 16.03.2020 - 19.04.2020 <br>
+                        2. <u>Lockdown:</u> 02.11.2020 - 20.12.2020
+                    </h3>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="scroll-down-button-left">
+                            <a href="#settings" class="button">Details</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="scroll-down-button-right">
+                            <a href="#visual-radar" class="button">Comparison</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--Section for the Map and the line-chart. The year container entails a short description such as the slider area with the year options-->
+<section>
+    <div class="box">
+        <div id="settings" class="container">
+            <div class="row align-items-center position-relative">
+                <div class="col-lg-12">
+                    <div class="year-container">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="text-area">
+                                        <p>
+                                            Click a Federal State on the map to view its detailed information. Adjust
+                                            details by switching between 2019 and 2020.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div id="slider-area">
+                                        <p for="years">Select a year:</p><br/>
+                                        <input type="range" id="years" name="years" list="tickyear" min="2019"
+                                               max="2020" value="2019" class="poorslider"/>
+                                        <datalist id="tickyear">
+                                            <option value="2019" label="2019"></option>
+                                            <option value="2020" label="2020"></option>
+                                        </datalist>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6" class="map-container">
+                            <div>
+                                <tmp class="map"></tmp>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div id="month-linechart" class="chart-content" style="opacity: 0;"></div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div id="detail-Information" style="opacity: 0;">
+                                        <div class="details-modal">
+                                            <div class="details-modal-title">
+                                                <h2 class="federal-content">-</h2>
+                                            </div>
+                                            <div class="details-modal-content">
+                                                <li class="ankunft-content">Ankünfte: 0</li>
+                                                <li class="uebernachtung-content">Übernachtungen: 0</li>
+                                                <li class="avg-content">Durchschnittlich übernachtete Tage: 0</li>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script src="../assets/main.js" type="application/javascript"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--/* section for radar chart. divided in containers for chart, radio buttons and the dropdown list for the federal states */-->
+<section class="visual-radar" id="visual-radar">
+    <div class="box">
+        <div class="row align-items-center position-relative">
+            <div class="col-lg-12">
+                <div class="spider-settings-container">
+                    <div class="col-sm-12">
+                        <div class="text-area">
+                            <p>
+                                View the effects of both COVID lockdowns for each individual Federal State by regarding
+                                'Arrivals' and 'Overnight Stays' within 2019 and 2020.<br>
+
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="radio" id="radio">
+                                    <form action="/overnight.js">
+                                        <label for="Arrivals" class="form-control">
+                                            <input type="radio" id="arrival" name="spider_data" value="Ankuenfte">
+                                            Arrivals
+                                        </label>
+                                        <label for="Overnight Stays" class="form-control">
+                                            <input type="radio" id="overnight" name="spider_data"
+                                                   value="Uebernachtungen" checked>
+                                            Overnight Stays
+                                        </label>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <br/>
+                                <br/>
+                                <div class="dropdown">
+                                    <select id="selectstate"></select>
+                                    <div class="myOptions">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-7" class="spider-chart-container">
+                        <div id="compareOve" class="compareOve" style="opacity: 0;"></div>
+                    </div>
+                </div>
+            </div>
+            <script src="../assets/overnight.js" type="application/javascript"></script>
+        </div>
+    </div>
+</section>
+
+<footer>
+
+</footer>
+
+</body>
+</html>

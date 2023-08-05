@@ -1,0 +1,24 @@
+{
+  "name": "infovis",
+  "version": "0.0.1",
+  "description": "Project for Information Visualization winter term 2022 Team 18",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "gitlab.lrz.de/iv2223-projects/team_18"
+  },
+  "author": "Yagiz, Erdem, Ogi, Egesa, Sabrina",
+  "license": "ISC",
+  "dependencies": {
+    "consolidate": "^0.16.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "html": "^1.0.0",
+    "path": "^0.12.7",
+    "swig": "^1.4.2"
+  }
+}
